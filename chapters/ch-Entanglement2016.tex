@@ -1,0 +1,387 @@
+\ProvidesFile{chapters/ch-Entanglement2016.tex}
+
+\chapter{Observation of quantum entanglement in top quark pair production in proton-proton collisions at $\sqrt{s}$ = 13 \TeV}
+\label{ch:Entanglement2016}
+
+\section{Introduction}
+
+\section{Datasets and Simulated Samples}
+\label{sec:datasets}
+
+The datasets analyzed in this analysis are the data collected by the CMS detector during the 2016 run of the LHC resulting in $36.31 \pm 0.44$ \invfb of integrated luminosity. Both single lepton (labeled ``SingleElectron'' and ``SingleMuon'') and double lepton (labeled ``DoubleEG'', ``MuonEG'', and ``DoubleMuon'') triggers are used in this analysis. The single lepton triggers increase the size of the dataset by approximately 10\% by including events that failed the dilepton trigger requirements. A summary of the datasets is displayed in Table~\ref{tab:datasets}.
+
+The MC signal samples required for this analysis are top quark and top antiquark pairs (\ttbar), and spin-singlet color-singlet quasi-bound states (\etat, also referred to as ``toponium''). The \ttbar signal samples were produced centrally during the Summer 2016 MC production campaign for the CMS experiment. The \ttbar signal sample is generated using the \Powheg event generator at next-to-leading order (NLO) in $\alpha_s$. This \ttbar sample will be referred to as ``Nominal'', ``PH+P8'', and spin correlated (SC) sample. Alternative samples for the \ttbar signal sample are generated using \MGaMCatNLO with \Pythia for the parton showering and hadronization, and \Powheg with \Herwig for the parton showering and hadronization. Additionally, a \ttbar sample with the spin correlations artificially turned off is generated using the \Powheg event generator at NLO in $\alpha_s$. We refer to this same as the no spin correlation (noSC) sample. The \etat signal samples were produced privately using a toy model with its couplings tuned to match the NRQCD predictions. A toy model is required due to the intrinsic non-perturbative nature of the quasi-bound state production detailed in Section~\ref{subsec:topProduction}. The toy model is constructed from an effective Lagrangian:
+
+\begin{equation}
+\label{eq:etat_langrangian}
+    \mathcal{L}_{\etat} = \frac{1}{2}\partial_{\mu} \phi_{\etat} \partial^{\mu} \phi_{\etat} - \frac{1}{2} m_{\etat} \phi_{\etat}^2 - \frac{1}{4} g_{gg\etat} \phi_{\etat} G^{a}_{\mu\nu} \Tilde{G}^{a\mu\nu}-ig_{tt\etat} \phi_{\etat} \bar{t} \gamma_{5} t
+\end{equation}
+where $\phi_{\etat}(x)$ is the pseudoscalar toponium field, $G^{a}_{\mu\nu}(x)$ is the covariant gluon field strength tensor, $t(x)$ is the top quark field, $g_{gg\etat}$ is the coupling of the gluon field to the toponium field, and $g_{tt\etat}$ is the coupling of the top quark field to the toponium field. The \etat signal sample is generated using \MGaMCatNLOOnly version 2.6.5 at LO. A filter on the toponium invariant mass is applied to restrict the toponium model to have masses between 337 and 349~\GeV as the toy model predicts nonphysical cross sections outside this region. Systematics related to \etat are also produced privately using the above identical configuration. The invariant mass filter is shifted accordingly so that the 12~\GeV window is always centered on the toponium mass. Both signal samples use \Pythia for parton showering and hadronization with the CUETP8M2T4 underlying-event tune. The \Herwig alternative \ttbar signal sample uses the EE5C underlying-event tune instead.
+
+The dominant backgrounds considered for this analysis are Drell--Yan (\zjets), \wjets, single top quark production in association with a W boson ($\mathrm{tW}$), di-boson ($\mathrm{WW}$, $\mathrm{WZ}$, and $\mathrm{ZZ}$), and pair top quark production in association with a weak boson ($\mathrm{t\bar{t}V}$). The \zjets and \wjets processes are generated with \MGMLM, the $\mathrm{tW}$ process is generated with \Powheg, while the diboson processes are generated using \Pythia. All of the background samples use \Pythia for parton showering and hadronization. The CUETP8M2T4 underlying-event tune is applied for the $\mathrm{tW}$ process whereas all other background samples use the \Pythia CUETP8M1 underlying-event tune.
+
+All the signal and background processes except for \etat and the noSC samples use a full CMS detector simulation to estimate the effects of the detector. The full CMS detector simulation is carried out using \Geant version 9.4. The noSC samples are generated at parton-level and the nominal SC is reweighted to the noSC sample differentially in $cos \varphi \otimes \beta_z(\ttbar) \otimes m(\ttbar)$ to estimate the effects of the detector for the noSC sample. To estimate the effects of the detector for the \etat signal sample, the \ttbar detector response matrix is used. The \ttbar detector response matrix is a matrix of probabilities where each matrix element tells you within each bin how the probability density of events at the parton-level ends up at the detector level. The diagonal elements of the detector response matrix tell you the probability of events being correctly reconstructed in the same bin as they were generated, whereas off-diagonal elements tell you how often you mis-reconstructed the events as having a different value than what they were generated with. In this manner, we can talk about the rows (columns) of the matrix corresponding to the generated (detected) axis. The response matrix accounts for events that are generated but are not detected by the detector by causing the events to migrate out of the phase space into the underflow bins of the response matrix along the detected axis. After the \ttbar response matrix is constructed, the parton level distribution for the \etat signal sample is multiplied by the response matrix to obtain the detector level distribution for \etat. The parton density functions (PDF) for both the signal and background processes are described using NNPDF3.0 and the top quark mass is assumed to be $m_\mathrm{t}=172.5$ \GeV.
+
+\begin{table}
+\begin{center}
+\small
+\caption{Datasets used in this analysis.}
+\label{tab:datasets}
+ \begin{tabular}{| c |c|}
+  \hline 
+Sample & Run range\\\hline
+/DoubleEG/Run2016B-03Feb2017\_ver2-v2 & 272007--275376\\
+/DoubleEG/Run2016C-03Feb2017-v1 & 275657--276283\\
+/DoubleEG/Run2016D-03Feb2017-v1 & 276315--276811\\
+/DoubleEG/Run2016E-03Feb2017-v1 & 276831--277420\\
+/DoubleEG/Run2016F-03Feb2017-v1 & 277772--278808\\
+/DoubleEG/Run2016G-03Feb2017-v1 & 278820--280385\\
+/DoubleEG/Run2016H-03Feb2017\_ver2-v1 & 281613--284035\\
+/DoubleEG/Run2016H-03Feb2017\_ver3-v1 & 284036--284044\\\hline
+/DoubleMuon/Run2016B-03Feb2017\_ver2-v2 & 272007--275376\\
+/DoubleMuon/Run2016C-03Feb2017-v1 & 275657--276283\\
+/DoubleMuon/Run2016D-03Feb2017-v1 & 276315--276811\\
+/DoubleMuon/Run2016E-03Feb2017-v1 & 276831--277420\\
+/DoubleMuon/Run2016F-03Feb2017-v1 & 277772--278808\\
+/DoubleMuon/Run2016G-03Feb2017-v1 & 278820--280385\\
+/DoubleMuon/Run2016H-03Feb2017\_ver2-v1 & 281613--284035\\
+/DoubleMuon/Run2016H-03Feb2017\_ver3-v1 & 284036--284044\\\hline
+/MuonEG/Run2016B-03Feb2017\_ver2-v2 & 272007--275376\\
+/MuonEG/Run2016C-03Feb2017-v1  & 275657--276283\\
+/MuonEG/Run2016D-03Feb2017-v1 & 276315--276811\\
+/MuonEG/Run2016E-03Feb2017-v1 & 276831--277420\\
+/MuonEG/Run2016F-03Feb2017-v1 & 277772--278808\\
+/MuonEG/Run2016G-03Feb2017-v1 & 278820--280385\\
+/MuonEG/Run2016H-03Feb2017\_ver2-v1 & 281613--284035\\
+/MuonEG/Run2016H-03Feb2017\_ver3-v1 & 284036--284044\\\hline
+/SingleElectron/Run2016B-03Feb2017\_ver2-v2 & 272007--275376\\
+/SingleElectron/Run2016C-03Feb2017-v1 & 275657--276283\\
+/SingleElectron/Run2016D-03Feb2017-v1 & 276315--276811\\
+/SingleElectron/Run2016E-03Feb2017-v1 & 276831--277420\\
+/SingleElectron/Run2016F-03Feb2017-v1 & 277772--278808\\
+/SingleElectron/Run2016G-03Feb2017-v1 & 278820--280385\\
+/SingleElectron/Run2016H-03Feb2017\_ver2-v1 & 281613--284035\\
+/SingleElectron/Run2016H-03Feb2017\_ver3-v1 & 284036--284044\\\hline
+/SingleMuon/Run2016B-03Feb2017\_ver2-v2 & 272007--275376\\
+/SingleMuon/Run2016C-03Feb2017-v1 & 275657--276283\\
+/SingleMuon/Run2016D-03Feb2017-v1 & 276315--276811\\
+/SingleMuon/Run2016E-03Feb2017-v1 & 276831--277420\\
+/SingleMuon/Run2016F-03Feb2017-v1 & 277772--278808\\
+/SingleMuon/Run2016G-03Feb2017-v1 & 278820--280385\\
+/SingleMuon/Run2016H-03Feb2017\_ver2-v1 & 281613--284035\\
+/SingleMuon/Run2016H-03Feb2017\_ver3-v1 & 284036--284044\\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+\section{Object and Event Selection}
+The data listed in Section~\ref{sec:datasets} is required to pass one of the several dilepton or single lepton triggers. For the events containing two reconstructed opposite charge muons, the \pT of the muons are required to be larger than 17 and 8~\GeV. Events containing two reconstructed opposite charge electrons, the \pT of the electrons are required to be larger than 23 and 12~\GeV. For the events containing a reconstructed electron and muon, either the muon \pT is required to be greater than 23 \GeV and the electron greater than 12~\GeV or the muon is greater than 8 \GeV and the electron greater than 23~\GeV. The single lepton HLT triggers require the electron \pT to be greater than 27~\GeV and the muon greater than 24~\GeV. Isolation and identification requirements are imposed on the reconstructed particles as well for both the single and double lepton triggers. The HLT triggers with the string DZ in the path require the reconstructed z-coordinate of the vertex position of the leptons to be within 0.2 cm of each other. Table~\ref{tab:triggerlist} details the HLT triggers used in this analysis.
+
+\begin{table}
+\begin{center}
+\small
+\caption{HLT triggers used in this analysis}
+\label{tab:triggerlist}
+ \begin{tabular}{ |c |c|c|}
+  \hline 
+HLT path & Run Range & channel\\\hline
+HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v*&B-G&  $\mu^{+}\mu^{-}$ \\
+HLT\_Mu17\_TrkIsoVVL\_TkMu8\_TrkIsoVVL\_v*& B-G &\\
+HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_v* &H &\\
+HLT\_Mu17\_TrkIsoVVL\_TkMu8\_TrkIsoVVL DZ\_v* &H &\\\hline
+
+%HLT\_IsoMu24\_v*&B-H& $e^{+}e^{-}$ \\
+%HLT\_IsoTkMu24\_v*&B-H&\\\hline
+
+HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ\_v* &B-H&$e^{+}e^{-}$\\\hline
+HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_v*&B-G &  $\mu^{\pm}e^{\mp}$ \\
+HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ\_v*&H&\\\hline
+
+HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_v*&B-G&$\mu^{\pm}e^{\mp}$\\
+HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ\_v*&H&\\\hline
+
+HLT\_Ele27\_WPTight\_Gsf\_v*&B-H& $\mu^{\pm}e^{\mp}$\\
+&& $e^{+}e^{-}$\\\hline
+
+HLT\_IsoMu24\_v*&B-H&$\mu^{\pm}e^{\mp}$\\
+HLT\_IsoTkMu24\_v*&B-H&$\mu^{+}\mu^{-}$\\\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+After the event passes the triggers listed above, the offline reconstructed physics objects are required to pass selection criteria. Events with a primary vertex of $n_{dof} > 4$, $\abs{\rho}< 2$ cm, and $\abs{z} < 24$ cm, where $n_{dof} = -3 + 2\sum_{i=1}^{\# tracks} w_i$ and $w_i$ is the weight of the i$^{th}$ track, $\rho$ is the radius in the cylindrical coordinate system $\rho$-$\eta$-$\phi$, and $z$ is the z-coordinate in the cylindrical coordinate system $\rho$-$\phi$-$z$, are selected. [https://arxiv.org/pdf/1405.6569] The charged hadron and neutral hadron components of the pileup are removed and then the MC samples are reweighted to match the pileup distributions in data. 
+
+The event topology for this analysis is two oppositely charged leptons, two jets originating from bottom quarks, and a large missing transverse energy from the two neutrinos. Therefore, we select events with exactly two opposite sign particle-flow electrons or muons with $\pT>25(20)~\GeVc$ for the leading (subleading) lepton and $\abs{\eta}<2.4$. Electrons are rejected if $1.4442<\abs{\eta_{SC}}<1.5660$ as this is the location of the gap between the ECAL barrel and endcap region. 
+
+The tight identification criteria for muons are required to suppress fake muons and in-flight decays while selecting prompt muons. The identification criteria are such that the candidate is reconstructed as both a Global Muon and Particle Flow muon. The global muon track fit is required to have $\chi^2/n_{dof} <10$, at least one muon chamber hit, and muon segments in at least two muon stations. The muon track from the silicon tracker must have transverse impact parameter with respect to the primary vertex, $d_{xy}$, $<0.2$ cm, the longitudinal distance of the track with respect to the primary vertex, $d_z$, $<0.5$ cm, have at least one valid pixel hit, and the number of valid pixel hits in the inner tracker must be at least 6. 
+
+The tight identification criteria for electrons are required to select prompt electrons reconstructed with the Gaussian Sum Filter algorithm. The shower shape variable, $\sigma_{i\eta i\eta}$ must be less than 0.00998 (0.0292), $\abs{\Delta\eta_{InSeed}}$ must be less than 0.00308 (0.00605), $H/E$ must be less than 0.0414 (0.0641), the relative combined particle-flow isolation with efficiency and acceptance corrections must be less than 0.0588 (0.0394), and the impact parameters $d_0$ must be less than 0.05 (0.1) cm and $d_z$ must be less than 0.1 (0.2) cm for electrons reconstructed in the barrel (endcap). The absolute difference between the inverse energy and inverse momentum of the electron must be less than 0.0129 as well. At most one hit may be missing in the inner tracker and the electron must pass the conversion safe electron veto.
+
+A relative isolation criterion on the muons, $I_{Rel}^{\mu}$, is calculated as the sum of the transverse energy from particle-flow charged hadron, neutral hadron, and photon candidates within $\Delta R$ of 0.4 of the candidate muon relative to the candidate muon \pT. $I_{Rel}^{\mu}$ of less than 0.15 is required to remove muons that are from QCD jets. A similar relative isolation criterion for the electrons, $I_{Rel}^{e}$, is calculated in the same manner except for a distance of $\Delta R$ of 0.3 is used and it is not a trivial sum of the charged hadron, neutral hadron, and photon candidates relative isolations: $I_{Rel}^{e}=I_{ch}+$max$(I_\gamma + I_{nh} - \rho A_{eff}, 0)$, where $I_{ch}, I_\gamma$ and $I_{nh}$ are the charged hadron, photon, and neutral hadron candidates component of the isolation, respectively. Pileup interactions will often produce neutral hadrons via gluon splitting and photons and thus the energy deposition from pileup interactions must be subtracted from the isolation. $A_{eff}$ is an effective area that gives information about the susceptibility to soft contamination and is chosen such that isolation is flat with respect to the number of pileup interactions. $\rho$ is an estimate of the energy density per unit area associated with the pileup interactions, thus $\rho A_{eff}$ gives an estimate of the amount of energy deposition from pileup interactions.
+
+At least two anti-$k_T$ jets with a distance parameter of 0.4 and passing the jet identification criteria are required to be present. Jet energy corrections (JEC) are applied at different levels prior to applying the selection cuts. JECs applied at Level 1 are to correct for the effects due to pileup. The Level 2 and Level 3 corrections are applied in data and simulation to correct for the variation in the response in $\eta$ and \pT. Last, a final set of corrections are applied on the data. The identification criteria used in this analysis is such that the particle flow jets are required to have \pT greater than 30\GeV and $\abs{\eta} < 2.4$. A loose identification criterion is employed to reject fake jets, badly reconstructed jets, and noise while keeping the efficiency for selecting real jets high. The identification criterion requires the fraction of charged hadronic energy to be greater than zero and the fraction of charged electromagnetic energy, neutral electromagnetic energy, and neutral hadronic energy to each be less than 0.99. Any jets that lie within a distance $\Delta R$ of 0.4 to the selected candidate leptons is rejected. Additionally, at least one of the jets is required to be b-tagged with the loose working point of the CSV b-tagging algorithm $iCSVv2$ with a cut of 0.5426 corresponding to a $~10\%$ mistag efficiency.
+
+A cut on the invariant mass of the dilepton system $\mll > 20~\GeV$ is applied to suppress events from decays of heavy-flavor resonances and low-mass Drell--Yan processes. Events with same flavor leptons ($e^+e^-$ and $\mu^+\mu^-$) are rejected if \met$<40~\GeV$ and $76 < \mll < 106~\GeV$ to further reduce the Drell--Yan background. \met is defined as the magnitude of the negative vector sum of the transverse momenta of all particle-flow reconstructed particles in an event. A beam halo filter and HCAL and ECAL endcap noise filter are applied before calculating \met to increase the accuracy and precision of the calculation.
+
+\section{Top Reconstruction}
+
+\section{Entanglement Physics Model}
+\label{sec:physmodel}
+In this section, the construction of our physics model that allows for a continuous change in the entanglement witness $D$ is detailed. The purpose of this physics model is to enable a measurement of the entanglement witness $D$ at the reconstruction level through a profile likelihood fit detailed in Section~\ref{sec:stat_model}.
+
+Currently in Monte Carlo generators you cannot continuously change the amount of spin correlation present in the \ttbar system. However, we can turn off spin correlations in $\MadSpin$ and we will refer to this type of sample as the $\sc{No\ Spin\ Correlation}$ sample. One solution is to construct a new Monte Carlo sample where you mix together fractions of $\Powheg + \Pythia$ and $\textsc{No\ Spin\ Correlation}$. The mixed samples can then allow for a continuous change of our entanglement witness from the predicted $D$ in $\Powheg + \Pythia$ to $0.0$. Any particular mixture of combined SC and noSC signal corresponds to a certain value of $D$ at the parton level by means of calculating a 2-bin forward-backward asymmetry ($A_D$) with the combined signal model consisting of \ttbar and \etat. The value of 
+\begin{linenomath}
+   \begin{align}
+      A_D = (N(\cos \varphi>0) - N(\cos \varphi <0)) / (N(\cos \varphi > 0) + N(\cos \varphi < 0))
+   \end{align}
+\end{linenomath}
+yields $D$ as $-2 \cdot A_D$, with $N$ always being the sum of \ttbar and \etat. We take this as our physics model and show the measured D values at both the reconstruction level and generator level using the forward-backward asymmetry in the $\cos \varphi$ distribution in Fig.~\ref{fig:physmodel}. We believe this physics model is well motivated physically based on the fact that top quark-antiquark pairs are in general produced in a mixed state at the LHC. By adding in more events that are not correlated we are essentially altering the fraction of the spin density matrix of the top quark-antiquark pairs produced by the LHC that has no spin correlation. Based on the current tools given by Monte Carlo generators, we feel this is a suitable physics model to measure entanglement with.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{figures/calibration_curves/phys_model.pdf}
+%     \caption{No spin correlation physics model allowing a continuous variation of the spin coefficient $D$.}
+%     \label{fig:physmodel}
+% \end{figure}
+
+One issue still remains that Nature could allow for top quark-antiquark pairs to be more entangled than what $\Powheg + \Pythia$ predicts and this phase space is not covered by our physics model. Based on the linearity observed in Fig.~\ref{fig:physmodel}, we assume linearity and mirror the templates to represent the effect of subtracting no spin correlation events from the spin density matrix causing the top quark-antiquark system to become more entangled. These template variations for a selected set of mixed-together fractions is displayed in Fig.~\ref{fig:templates}. These variations are assigned an unconstrained shape prior and are redefined as the parameter of interest in the fit.
+
+We use a no-spin-correlation $\tt$ sample available at parton-level to reweight the \Powheg+\Pythia to become a no-spin-correlation sample with fully simulated detector effects. The comparison between the $\Powheg$, reweighted no-spin-correlation $\Powheg$, and the original no-spin-correlation sample is shown in Fig~\ref{fig:no_spin_comparison}. 
+
+% \begin{figure*}
+%     \includegraphics[width=0.9\textwidth]{figures/calibration_curves/no_spincorr_gen_comparison.pdf}
+%     \caption{\label{fig:no_spin_comparison}A comparison between the $\Powhegvtwo$, reweighted no-spin-correlation $\Powhegvtwo$, and the original no-spin-correlation sample in the observable binning. As can be seen, the reweighted no-spin-corr sample has no spin correlations present.}
+% \end{figure*}
+
+Figure \ref{fig:templates} (top) shows five ``mixtures" obtained from three values (0\%, 50\%, 100\%) of noSC contribution as a function of $\cos \varphi$ at the detector level, with the bottom left (right) plot showing a $+50$\% ($-50$\%) mixture of SC and noSC as an example. 
+The negative mixtures are created mirroring the corresponding positive mixtures around the 0\% noSC mixture, i.e., the nominal combined signal model.  
+
+% \begin{figure}[!htpb]
+%    \begin{center}
+%    \includegraphics[width=0.485\linewidth]{figures/combine/nosctemplates_preliminary} \\
+%    \includegraphics[width=0.475\linewidth]{figures/combine/nosctemplates_positive_breakdown_log_preliminary}
+%    \includegraphics[width=0.475\linewidth]{figures/combine/nosctemplates_negative_breakdown_log_preliminary}
+%    \caption{\label{fig:templates}\protect
+%    Reconstruction-level distribution (top) of the combined \ttbar + $\eta_{\mathrm{t}}$ signal model in mixtures of the noSC combined signal sample, more details in the text. Template variations are shown as a function of $\cos \varphi$ in the phase space of $345 < m(\ttbar) < 400$\GeV and $0.0 < \beta < 0.9$ for a +50\% mixture of SC and noSC (bottom left) and a -50\% mixture (bottom right). 
+%    }
+%    \end{center}
+% \end{figure}
+
+\section{Statistical Model}
+\label{sec:stat_model}
+To reduce the impact of the systematic uncertainties on the extracted reconstruction-level coefficients, a maximum likelihood fit of the $\cos \varphi$ distribution is performed using the HiggsCombine Tool. All of the systematic uncertainties described above are implemented as shape-based nuisances. The only exceptions to this are the luminosity, branching ratio correction, background uncertainties, and \ttbar and toponium cross sections. These five systematics are implemented as lnN nuisances. %The toponium normalization uncertainty is externalized from the maximum likelihood fit.
+
+We perform a maximum likelihood fit to fit $D$ as our POI. Since we provide D as shape templates Combine will provide $D$ in units of standard deviations. We provide the $\pm$20\% noSC mixtures as templates. The +20\% noSC mixture has a $D$ value of -0.3725, the nominal signal sample has a $D$ value of -0.4648, and the -20\% noSC mixture has a $D$ value of -0.5570. Thus, one can convert from units of standard deviation ($D'$) to D.
+
+$$D=-0.4648+0.0922 \cdot D' $$
+
+We also perform the fit excluding all contributions and nuisances related to $\eta_{\mathrm{t}}$. The $\ttbar$ only +20\% noSC mixture has a $D$ value of -0.3595, the nominal signal sample has a $D$ value of -0.4505, and the -20\% noSC mixture has a $D$ value of -0.3595.
+
+$$D=-0.4505+0.0910 \cdot D'$$
+
+Fig.~\ref{fig:combinePrefit} shows the prefit $\cos \varphi$ distribution. A log-likelihood parameter scan is carried out to systematically explore the parameter space of our statistical model by varying $D$ and minimizing the logarithm of the likelihood function for each value of $D$.
+
+% \begin{figure}[!htpb]
+% \begin{center}
+% \includegraphics[width=0.85\linewidth]
+% %{figures/combine/combined_ll_cHel_fine_0.0_360.0_400.0_1000.0_combine.pdf}
+% {figures/combine/ll_cHel_6_beta_2_m_ttbar_2_prefit_preliminary.pdf}
+% \caption{\label{fig:combinePrefit}\protect
+% Prefit distribution for %the $m_{\ttbar}$ [360, 400] GeV 
+% $\cos\phi$ with the cut on $m_{\ttbar}$ at $400$ GeV and $\beta$ < 0.9 that will be used in the maximum likelihood fit.}
+% \end{center}
+% \end{figure}
+
+\section{Corrections and Systematic Uncertainties}
+In the following, the uncertainties are discussed in detail. All systematic templates that are provided with a shape prior are smoothed unless detailed specifically below. The smoothing is performed by taking the ratio of the systematic variation with the nominal $\Powheg + \Pythia$ sample and applying the $\textsc{TH1::Smooth()}$ function with its default arguments on the ratio. The smoothed ratio is then multiplied onto the nominal $\Powheg + \Pythia$ sample to re-obtain the systematic variation.
+
+\subsection{Experimental Corrections and Uncertainties}
+To improve the ability of the MC predictions to describe data, efficiency scale factors ($SF=\epsilon_{DATA}/\epsilon_{MC}$) are applied where necessary. The scale factors are generally applied as event weights to the simulation, unless stated differently.
+
+\subsubsection{Trigger Efficiencies}
+\label{sec:trigEff}
+
+\subsubsection{Lepton Selection Efficiencies}
+\label{sec:lepEff}
+
+\subsubsection{Kinematic Reconstruction Efficiencies}
+\label{sec:kinrecoEff}
+
+\subsubsection{Background Events}
+\label{sec:bgEvts}
+
+\subsubsection{Jet Energy Scale}
+\label{sec:JES}
+
+\subsubsection{Jet Energy Resolution}
+\label{sec:JER}
+
+\subsubsection{Unclustered \ETmiss}
+\label{sec:unclusteredMET}
+
+\subsubsection{Pileup}
+\label{sec:PU}
+
+\subsubsection{Luminosity}
+\label{sec:lumi}
+
+\subsubsection{Branching Fraction}
+\label{sec:bf}
+Branching ratios are taken from PDG 2022: $BR_{ee} = 0.01147\pm0.00034$, $BR_{\mu\mu} = 0.01130 \pm 0.00032$, and $BR_{e\mu} = 0.02277 \pm 0.00047$ for the prompt decays. Their combination is $BR_{\mathrm{combined}} = 0.04554 \pm 0.00094$. For the taus that decay leptonically (non-prompt) the branching ratios are: $BR_{ee} = 0.004755\pm0.000116$, $BR_{\mu\mu} = 0.004599 \pm 0.000110$, and $BR_{e\mu} = 0.009353 \pm 0.000208$. Their combination is $BR_{\mathrm{combined}} = 0.018707 \pm 0.000415$. The total branching ratio combining both the prompt and non-prompt decays is $BR_{\mathrm{combined}} = 0.06425 \pm 0.00117$ with an uncertainty of $1.82\%$ that is assigned a log normal prior.
+
+\subsection{Modeling Corrections and Uncertainties}
+The uncertainty arising from theoretical assumptions in the modeling is determined by generating dedicated samples and repeating the selection and top quark reconstruction or by varying the reference nominal sample using source-related weights.
+
+\subsubsection{Matrix Element Scales and Variation of $\alpha_s$ in parton shower}
+\label{sec:MEscales}
+
+\subsubsection{Top Quark Mass }
+\label{sec:TopMass}
+Two samples with top mass of 169.5~\GeV and 175.5~\GeV are used to get mass down and up distributions, needed to estimate an impact on signal selection efficiency. The top quark mass parameterization of the top quark pair production cross-section suggested by the LHCTOPWG is used to determine a scalefactor of 0.9213 (1.0866) for the \ttbar cross section that is applied to the up (down) variation. The variations in efficiencies are scaled linearly according to an uncertainty of 0.5~\GeV.
+
+The mass of toponium is determined by two parameters:
+\begin{equation}
+\label{eq:toponium_mass}
+m_{\etat} = 2\mt + E_B
+\end{equation}
+where $m_{\etat}$ is the mass of toponium, \mt is the mass of the top quark, and $E_B$ is the binding energy. Therefore, the top quark mass modeling systematic must be propagated to the toponium signal model by varying the toponium mass in parallel with the top quark mass to ensure the binding energy remains fixed at the nominally predicted value of -2~\GeV. Explicitly, the up variation is a toponium mass of 345~\GeV and top mass of 173.5~\GeV and the down variation is a toponium mass of 341~\GeV and top mass of 171.5~\GeV. The invariant mass filter applied at the LHE step is shifted accordingly based on the toponium mass. The variations in efficiencies are scaled linearly according to an uncertainty of 0.5 GeV.
+
+Both the \ttbar and \etat variations are assigned a shape prior.
+
+\subsubsection{ ME-PS matching }
+\label{sec:MEPSMatching}
+
+\subsubsection{ Underlying Event Tune }
+\label{sec:UETune}
+
+\subsubsection{ PDF}
+\label{sec:PDF}
+
+\subsubsection{Color Reconnection}
+\label{sec:ColorReco}
+
+\subsubsection{Fragmentation}
+\label{sec:Frag}
+
+\subsubsection{B semi-leptonic BR}
+\label{sec:BsemilepBR}
+
+\subsubsection{Top Quark $p_T$ reweighting}
+\label{sec:TopPt}
+We use fastNLO tables to compute the $p_{T,avt}$ distribution in NNLO QCD with the NNPDF30 nlo as 0118 PDF set. This distribution was chosen because it is the only distribution that is offered as a fastNLO table so that the PDF can be aligned with the $\ttbar$ MC, is purely a NNLO QCD calculation and does not include NLO EWK contributions to prevent doubly applying EWK corrections, the top quark mass is 172.5 GeV, and computed at $\sqrt{s}$=13~\TeV. 
+
+The same prescription in deriving a reweighting function is followed as outlined by the TOP PAG. Namely, we tested the two fitting functions:
+
+$SF1(pT)=e^{p0+p1 \cdot pT}$ \\
+$SF2(pT)=p0 e^{p1\cdot pT}+p2 \cdot pT+p3$
+
+SF1 does not describe the ratio accurately for high pT and for SF2 the linear slope parameter p2 is identical to 0 (p2=-0.000013$\pm$0.000581) within statistical uncertainty in the fit. Therefore to increase the degrees of freedom, we fit the function $SF3(pT)=p0e^{p1 \cdot pT}+p3$. Fig.~\ref{fig:nnloqcd} shows fitting SF1 and SF3.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.85\linewidth]{figures/nnloqcd.png}
+%     \caption{Comparison of the different scalefactor functions when fitting the ratio of Powheg to NNLO QCD.}
+%     \label{fig:nnloqcd}
+% \end{figure}
+
+We follow the same prescription where the geometric mean between the SFs for the top quark and antiquark is taken as the SF for the event and any top quark with pT greater than 500 GeV is evaluated at 500 GeV. The uncertainty in the NNLO QCD reweighting is taken as the full difference and assigned as a shape prior. Since the only variation we have is the \ttbar MC without a NNLO QCD reweighting, this results in only being able to supply a one-sided variation. To account for the discontinuity in the template morphing that is introduced by providing this as both the up and down variation to HiggsCombine, the fit is restricted in the positive variation.
+
+\subsubsection{Electroweak Corrections}
+\label{sec:EWK_Corrections}
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.95\textwidth]{figures/kappas.pdf} \\
+% \caption{(top) The scale factors used for the electroweak correction computed via Eq.~\ref{eq:ewk_correction}. \textsc{HATHOR} was used to perform the differential cross-section calculation at NLO EWK and Madgraph5+Pythia8 was used to compute the LO QCD differential cross-section. (bottom) The difference between the multiplicative and additive approach shown in Eq.~\ref{eq:ewk_unc}.}
+% \label{fig:kappas}
+% %\end{center}
+% \end{figure}
+
+The uncertainty on the electroweak corrections follows a similar prescription outlined in \cite{CMS:2020djy} and allows us to estimate the impact of missing higher-order terms in the matrix element calculations. Electroweak corrections are computed in \textsc{HATHOR} differentially in $cos \theta*$ and $m_{t\bar{t}}$ via the following expression:
+
+\begin{equation}
+\label{eq:ewk_correction}
+    \kappa_{NLO}^{EWK}\left(m(\ttbar), cos \theta^*\right) = \frac{\frac{d\sigma\left(m_{t\bar{t}}\right)}{d cos \theta}_{NLO}^{EWK}%_{cos \theta^*}
+    + \frac{d\sigma\left(m_{t\bar{t}}\right)}{d cos \theta}_{LO}^{QCD}%\Bigr|_{cos \theta^*}
+    }{ \frac{d\sigma\left(m_{t\bar{t}}\right)}{d cos \theta}_{LO}^{QCD}%\Bigr|_{cos \theta^*}
+    }
+\end{equation}
+
+where $m_{t\bar{t}}$ is the partonic center-of-mass energy and $cos \theta$ is the scattering angle in the center-of-mass frame. The generator level values of $m_{t\bar{t}}$ and $cos \theta$ are used to determine the appropriate $\kappa_{NLO}^{EWK}$ scale factor per event and the mapping is shown in Fig~\ref{fig:kappas}. Applying these electroweak corrections can be performed via two different methods:
+
+\begin{equation}
+\label{eq:multiplicative_ewk_corr}
+    n_{bin}^{NLO\ QCD \times EWK} =  \kappa_{NLO}^{EWK} n_{bin}^{POWHEG}
+\end{equation}
+\begin{equation}
+\label{eq:additive_ewk_corr}
+    n_{bin}^{NLO\ QCD + EWK} = n_{bin}^{LO\ QCD} + n_{bin}^{NLO\ QCD} + n_{bin}^{NLO\ EWK}
+\end{equation}
+
+where Eq.~\ref{eq:multiplicative_ewk_corr} is referred to as the multiplicative approach and Eq.~\ref{eq:additive_ewk_corr} is referred to as the additive approach, and $n_{bin}^i$ is the number of events in the corresponding bin. In most regions of the kinematic phase space, the electroweak contributions of the differential cross-section factorize, and therefore the multiplicative approach is a good approximation to correct for higher-order electroweak contributions.
+
+The difference between the two approaches, Eq.~\ref{eq:multiplicative_ewk_corr} and Eq.~\ref{eq:additive_ewk_corr}, is taken as a systematic uncertainty: 
+
+\begin{equation}
+\label{eq:ewk_unc}
+\begin{aligned}
+  \delta n_{bin}^{NLO\ QCD \times EWK} &= n_{bin}^{NLO\ QCD \times EWK} - n_{bin}^{NLO\ QCD + EWK} \\
+    &= \kappa_{NLO}^{EWK} n_{bin}^{POWHEG} - \left(n_{bin}^{LO\ QCD} + n_{bin}^{NLO\ QCD} + n_{bin}^{NLO\ EWK}\right) \\
+    &= \kappa_{NLO}^{EWK} n_{bin}^{POWHEG} - \left(\kappa_{NLO}^{EWK} * n_{bin}^{LO\ QCD} + n_{bin}^{NLO\ QCD}\right) \\
+    &=  \kappa_{NLO}^{EWK} \left( n_{bin}^{POWHEG} - n_{bin}^{LO\ QCD}\right) + \left(n_{bin}^{NLO\ QCD} + n_{bin}^{LO\ QCD} - n_{bin}^{LO\ QCD}\right) \\
+    &=  \left(\kappa_{NLO}^{EWK} - 1\right) \left( n_{bin}^{POWHEG} - n_{bin}^{LO\ QCD}\right) \\
+    &=  \left(\kappa_{NLO}^{EWK} - 1\right) \left( \frac{n_{bin}^{POWHEG} - n_{bin}^{LO\ QCD}}{n_{bin}^{POWHEG}}\right) n_{bin}^{POWHEG} \\
+    &=  \left(\kappa_{NLO}^{EWK} - 1\right) \left(1 - \frac{n_{bin}^{LO\ QCD}}{n_{bin}^{POWHEG}}\right) n_{bin}^{POWHEG} \\
+    &= \delta_{EWK}\ \delta_{QCD}\ n_{bin}^{POWHEG}
+\end{aligned}
+\end{equation}
+
+where $\delta_{EWK} = \left(\kappa_{NLO}^{EWK} - 1\right)$ and $\delta_{QCD} = \left(1 - \frac{n_{bin}^{LO\ QCD}}{n_{bin}^{POWHEG}}\right)$. The LO QCD sample is used to estimate the $\delta_{QCD}$ term. This systematic is assigned a shape prior. Since the only variation we have is the additive approach, this results in only being able to supply a one-sided variation. To account for the discontinuity in the template morphing that is introduced by providing this as both the up and down variation to HiggsCombine, the fit is restricted in the positive variation.
+
+\subsubsection{Toponium Binding Energy}
+\label{sec:Toponium_Mass}
+In the threshold region, a top quark-antiquark bound state, called toponium, is predicted to form with a mass of 343 GeV and width of 7 GeV \cite{bib:Fuks_2021}. From Eq.~\ref{eq:toponium_mass}, varying the toponium mass independent of the top quark mass equates in a variation of the binding energy, $E_B$. Due to the necessity to perform this measurement in the vicinity of the threshold region, a systematic uncertainty needs to be added due to the uncertainty on the as-of-yet undiscovered mass of toponium resonance. 
+
+To quantify the impact of this uncertainty, systematic variations are produced using MG5\_aMC@NLO v2.6.5 interfaced with PYTHIA8.240 for parton showering and hadronization with the CUETP8M1 tune. The binding energy of the toponium sample is varied +(-) 1 GeV of its nominal -2 GeV value for the up (down) variation  with the invariant mass filter applied at the LHE step shifted by the same amount, respectively. The impacts of this binding energy systematic variation can be seen in Figs.~\ref{fig:binding_energy_impacts} and~\ref{fig:reco_binding_energy_comparison}. We can see from Fig.~\ref{fig:reco_binding_energy_comparison} that the binding energy modeling systematic is a 2\% variation on toponium which amounts for maximally 2\% of the total signal in any given bin. This means that for this analysis the binding energy is maximally a 2\% effect on a 2\% effect or a roughly 0.04\% effect. This is assigned a shape prior.
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.4\textwidth]{figures/toponium_mass_systematic.pdf}
+% \includegraphics[width=0.55\textwidth]{figures/extended_reco_mttbar_spectrum.pdf}\\
+% \caption{(left) The parton-level distributions of $m_{t\bar{t}}$ for the different binding energy variations of the toponium signal. (right) The reconstruction-level distribution of $m_{t\bar{t}}$ showing the impact of the binding energy variations on the toponium signal. We see a roughly 0.5\% impact on the total signal model in the [345,360] GeV $m_{t\bar{t}}$ bin which quickly decreases to 0\% as $m_{t\bar{t}}$ increases.}
+% \label{fig:binding_energy_impacts}
+% %\end{center}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.95\textwidth]{figures/reco_toponium_mass_systematic_comparison.pdf}
+% \caption{The impact of the binding energy variation on the multidifferential cross-section of $m_{t\bar{t}} \times \cos \varphi$. The ratio shows the relative impact of the binding energy variation on the toponium portion of the signal model.}
+% \label{fig:reco_binding_energy_comparison}
+% %\end{center}
+% \end{figure}
+
+\subsubsection{Toponium Normalization}
+\label{sec:Toponium_Normalization}
+Similarly to Sec.~\ref{sec:Toponium_Mass}, a systematic uncertainty associated with the unknown cross-section of toponium needs to be added. The nominally predicted cross-section for toponium at $\sqrt{s}=$13\TeV is 6.43 pb. The up variation for the toponium cross-section is considered to be 9.645 pb and the down variation is 3.215 pb. The impact on the reconstruction-level $m_{t\bar{t}}$ spectrum is shown in Fig.~\ref{fig:reco_toponium_normalization}. This is assigned a log normal prior.
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.95\textwidth]{figures/extended_reco_mttbar_spectrum_normalization.pdf}
+% \caption{The impact of the toponium normalization variation on the $m_{t\bar{t}}$ spectrum. The ratio shows the relative impact of the normalization systematic on the signal modeling.}
+% \label{fig:reco_toponium_normalization}
+% %\end{center}
+% \end{figure}
+
+
+\subsubsection{\ttbar\ Normalization}
+\label{sec:Toponium_Normalization}
+The top quark pair production cross section is assigned a $5\%$ uncertainty and a log normal prior.
+
+\section{Results}
+
+\section{Conclusion}

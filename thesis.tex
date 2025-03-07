@@ -76,7 +76,7 @@
 
 % author
 % Put your name here.
-\def\ZZauthor{Name Here}
+\def\ZZauthor{Andrew James Wildridge}
 
 % document
 % Choose a document from the following list:
@@ -93,7 +93,7 @@
 %     December
 % followed by a space
 % then choose a year from 2020 to 2030.
-\def\ZZgraduation{December 2023}
+\def\ZZgraduation{May 2025}
 
 % title
 % If you need to manually split the title,
@@ -102,7 +102,7 @@
 %       This is the First Line\\[-6pt]
 %       and this is the Second Line%
 %     }
-\def\ZZtitle{Title Here}
+\def\ZZtitle{Measurement of the Hierarchy of Quantum Correlations Present in Top Quark-Antiquark Pairs at $\sqrt{\MakeLowercase{s}} = 13$ TeV}
 
 
 % showcolophon
@@ -542,8 +542,8 @@
 \usepackage{lineno}
 %\linenumbers
 
-
-\newcommand{\ttbar}{\ensuremath{t\bar{t}}\xspace}
+\newcommand{\ttbar}{\ensuremath{\mathrm{t\bar{t}}}\xspace}
+\newcommand{\etat}{\ensuremath{\eta_{\mathrm{t}}}\xspace}
 \renewcommand{\pp}{\ensuremath{pp}\xspace}
 \newcommand{\beamenergy}{\ensuremath{\sqrt{s}=\SI{13}{\TeV}}\xspace}
 \newcommand{\invfb}{\ensuremath{\si{\femto \b}^{-1}}\xspace}
@@ -556,21 +556,51 @@
 \newcommand{\pTmiss}{\ensuremath{\pT^\text{miss}}\xspace}
 \newcommand{\ETmiss}{\ensuremath{E_{\mathrm{T}}^{\text{miss}}}\xspace}
 \newcommand{\MET}{\ETmiss}
+\newcommand{\met}{\ETmiss}
 \newcommand{\pT}{\ensuremath{p_{\mathrm{T}}}\xspace}
 \newcommand{\HT}{\ensuremath{H_{\mathrm{T}}}\xspace}
-
+\newcommand{\pt}{\pT}
 \newcommand{\mll}{\ensuremath{m_{\ell \bar{\ell}}}\xspace}
+\newcommand{\mt}{\ensuremath{m_{\mathrm{t}}}\xspace}
 
 
-\newcommand{\Powheg}{{\textsc{Powhegv2}}}
-\newcommand{\Pythia} {{\textsc{Pythia8}}}
-\newcommand{\Geant} {{\textsc{Geant4}}}
-\newcommand{\MadSpin} {{\textsc{MadSpin}}} 
-\newcommand{\Herwig} {{\textsc{Herwig++}}} 
-\newcommand{\MGaMCatNLO} {\textsc{MadGraph5\_aMc@NLO(FxFx)}}
-\newcommand{\MGaMCatNLOOnly} {\textsc{MadGraph5\_aMc@NLO}}
-\newcommand{\MGMLM} {\textsc{MadGraph5\_aMc@NLO(MLM)}}
-\newcommand{\MG} {\textsc{MadGraph5(MLM)}}
+
+\newcommand{\de}{\ensuremath{^\circ}}
+\newcommand{\ten}[1]{\ensuremath{\times \text{10}^\text{#1}}}
+\newcommand{\mum}{\ensuremath{\,\mu\text{m}}\xspace}
+\newcommand{\micron}{\ensuremath{\,\mu\text{m}}\xspace}
+\newcommand{\cm}{\ensuremath{\,\text{cm}}\xspace}
+\newcommand{\mus}{\ensuremath{\,\mu\text{s}}\xspace}
+\newcommand{\keV}{\ensuremath{\,\text{ke\hspace{-.08em}V}}\xspace}
+\newcommand{\MeV}{\ensuremath{\,\text{Me\hspace{-.08em}V}}\xspace}
+\newcommand{\MeVns}{\ensuremath{\text{Me\hspace{-.08em}V}}\xspace} % no leading thinspace
+\newcommand{\GeV}{\ensuremath{\,\text{Ge\hspace{-.08em}V}}\xspace}
+\newcommand{\GeVns}{\ensuremath{\text{Ge\hspace{-.08em}V}}\xspace} % no leading thinspace
+\newcommand{\gev}{\GeV}
+\newcommand{\TeV}{\ensuremath{\,\text{Te\hspace{-.08em}V}}\xspace}
+\newcommand{\TeVns}{\ensuremath{\text{Te\hspace{-.08em}V}}\xspace} % no leading thinspace
+\newcommand{\PeV}{\ensuremath{\,\text{Pe\hspace{-.08em}V}}\xspace}
+\newcommand{\keVc}{\ensuremath{{\,\text{ke\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\MeVc}{\ensuremath{{\,\text{Me\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\GeVc}{\ensuremath{{\,\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\GeVcns}{\ensuremath{{\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace} % no leading thinspace
+\newcommand{\TeVc}{\ensuremath{{\,\text{Te\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\keVcc}{\ensuremath{{\,\text{ke\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+\newcommand{\MeVcc}{\ensuremath{{\,\text{Me\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+\newcommand{\GeVcc}{\ensuremath{{\,\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+\newcommand{\GeVccns}{\ensuremath{{\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace} % no leading thinspace
+\newcommand{\TeVcc}{\ensuremath{{\,\text{Te\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+
+
+\newcommand{\Powheg}{{\textsc{Powhegv2}}\xspace}
+\newcommand{\Pythia} {{\textsc{Pythia8}}\xspace}
+\newcommand{\Geant} {{\textsc{Geant4}}\xspace}
+\newcommand{\MadSpin} {{\textsc{MadSpin}}\xspace} 
+\newcommand{\Herwig} {{\textsc{Herwig++}}\xspace} 
+\newcommand{\MGaMCatNLO} {\textsc{MadGraph5\_aMc@NLO(FxFx)}\xspace}
+\newcommand{\MGaMCatNLOOnly} {\textsc{MadGraph5\_aMc@NLO}\xspace}
+\newcommand{\MGMLM} {\textsc{MadGraph5\_aMc@NLO(MLM)}\xspace}
+\newcommand{\MG} {\textsc{MadGraph5(MLM)}\xspace}
 
 
 \newcommand{\lumivalueSixPreVFP}{19.50\xspace \invfb} 
@@ -605,7 +635,7 @@
 \newcommand{\xsecTTZllnunu}{0.2529}
 \newcommand{\xsecTTZqq}{0.5297}
 
-\newcommand{\mtt} {\ensuremath{m_{\ttbar}}\xspace}
+\newcommand{\mtt} {\ensuremath{m(\ttbar)}\xspace}
 \newcommand{\ytt} {\ensuremath{y_{\ttbar}}\xspace}
 \newcommand{\pttt} {\ensuremath{\pT^{\ttbar}}\xspace}
 \newcommand{\yt} {\ensuremath{y_t}\xspace}
@@ -725,6 +755,22 @@
 %
 % Put chapter \include commands here.
 %
+\include{chapters/ch-Motivation}
+
+\include{chapters/ch-Theory}
+
+\include{chapters/ch-CMS}
+
+\include{chapters/ch-Entanglement2016}
+
+\include{chapters/ch-HierarchyFullRunII}
+
+\include{chapters/ch-PrimaryVertexing}
+
+\include{chapters/ch-PegasusCPCG}
+
+\include{chapters/ch-Bumblebee}
+
 \include{chapters/ch-Summary}
 % Summary and/or conclusions are optional but often used.
 % The summary and/or conclusions often are the last
